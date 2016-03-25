@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Loadingutil by ahkjxy</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Loadingutil</h1>
+        <h2>基于Zepto.js的页面Loading小组件</h2>
+        <a href="https://github.com/ahkjxy/loadingUtil" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="loadingutil" class="anchor" href="#loadingutil" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>loadingUtil</h1>
+
+<pre><code>基于Zepto.js的页面Loading组件。
+</code></pre>
+
+<blockquote>
+<p>啥也不说，看下面代码：</p>
+</blockquote>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;!DOCTYPE html&gt;
+&lt;<span class="pl-ent">html</span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">"</span>zh-CN<span class="pl-pds">"</span></span>&gt;
+
+&lt;<span class="pl-ent">head</span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>dns-prefetch<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">title</span>&gt;LoadingUtil demo&lt;/<span class="pl-ent">title</span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>viewport<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>imagemode<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>force<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>apple-mobile-web-app-capable<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>apple-mobile-web-app-status-bar-style<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>format-detection<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span>telephone=no<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>keywords<span class="pl-pds">"</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>&gt;
+<span class="pl-s1">    &lt;<span class="pl-ent">style</span>&gt;</span>
+<span class="pl-s1">        <span class="pl-ent">*</span> {</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">padding</span></span>:<span class="pl-c1">0</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">margin</span></span>:<span class="pl-c1">0</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">font-size</span></span>:<span class="pl-c1">.2<span class="pl-k">rem</span></span>;</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">        <span class="pl-e">.main</span> {</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">position</span></span>:<span class="pl-c1">relative</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">z-index</span></span>:<span class="pl-c1">2</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">height</span></span>:<span class="pl-c1">2000<span class="pl-k">px</span></span>;</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">        <span class="pl-e">.han</span> {</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">position</span></span>: <span class="pl-c1">fixed</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">left</span></span>: <span class="pl-c1">0</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">bottom</span></span>: <span class="pl-c1">0</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">z-index</span></span>: <span class="pl-c1">10001</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">padding</span></span>: <span class="pl-c1">15<span class="pl-k">px</span></span> <span class="pl-c1">0</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">rgba</span>(<span class="pl-c1">0, 25, 136, .6</span>);</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">text-align</span></span>: <span class="pl-c1">center</span>;</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">        <span class="pl-e">.han</span> <span class="pl-ent">button</span> {</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">cursor</span></span>: <span class="pl-c1">pointer</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">102<span class="pl-k">px</span></span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">height</span></span>: <span class="pl-c1">38<span class="pl-k">px</span></span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">line-height</span></span>: <span class="pl-c1">38<span class="pl-k">px</span></span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">padding</span></span>: <span class="pl-c1">0</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">0</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">background</span></span>: <span class="pl-c1">none</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#38f</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">16<span class="pl-k">px</span></span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">white</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">box-shadow</span></span>: <span class="pl-c1">none</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">font-weight</span></span>: <span class="pl-c1">normal</span>;</span>
+<span class="pl-s1">            <span class="pl-c1"><span class="pl-c1">margin-left</span></span>: <span class="pl-c1">20<span class="pl-k">px</span></span>;</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">    &lt;/<span class="pl-ent">style</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>loading.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">        <span class="pl-en">$</span>(<span class="pl-k">function</span>() {</span>
+<span class="pl-s1">            <span class="pl-k">var</span> loading <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Loading</span>({</span>
+<span class="pl-s1">                image<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>img/01.gif<span class="pl-pds">'</span></span>,    <span class="pl-c">// Loading image src</span></span>
+<span class="pl-s1">                width<span class="pl-k">:</span> <span class="pl-c1">30</span>,      <span class="pl-c">// Loading image width</span></span>
+<span class="pl-s1">                height<span class="pl-k">:</span> <span class="pl-c1">30</span>,      <span class="pl-c">// Loading image height</span></span>
+<span class="pl-s1">                zIndex<span class="pl-k">:</span> <span class="pl-c1">1e3</span>,          <span class="pl-c">// Use a high z-index by default</span></span>
+<span class="pl-s1">                imageClass<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>loadingImg<span class="pl-pds">'</span></span>, <span class="pl-c">// CSS class to assign to the element</span></span>
+<span class="pl-s1">                mask<span class="pl-k">:</span> <span class="pl-c1">true</span>,           <span class="pl-c">// Opacity of the mask</span></span>
+<span class="pl-s1">                maskClass<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>loadingMask<span class="pl-pds">'</span></span>, <span class="pl-c">//  CSS class to assign to the mask</span></span>
+<span class="pl-s1">                bgOpacity<span class="pl-k">:</span> <span class="pl-c1">.6</span>         <span class="pl-c">// Opacity of the mask</span></span>
+<span class="pl-s1">            });</span>
+<span class="pl-s1">            <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#btn1<span class="pl-pds">'</span></span>).<span class="pl-c1">click</span>(<span class="pl-k">function</span>() {</span>
+<span class="pl-s1">                <span class="pl-smi">loading</span>.<span class="pl-en">show</span>();</span>
+<span class="pl-s1">            })</span>
+<span class="pl-s1">            <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#btn2<span class="pl-pds">'</span></span>).<span class="pl-c1">click</span>(<span class="pl-k">function</span>() {</span>
+<span class="pl-s1">                <span class="pl-smi">loading</span>.<span class="pl-en">hide</span>();</span>
+<span class="pl-s1">            })</span>
+<span class="pl-s1">        })</span>
+<span class="pl-s1">    &lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">head</span>&gt;
+
+&lt;<span class="pl-ent">body</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>han<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">button</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>btn1<span class="pl-pds">"</span></span>&gt;显示Loading&lt;/<span class="pl-ent">button</span>&gt;
+    &lt;<span class="pl-ent">button</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>btn2<span class="pl-pds">"</span></span>&gt;隐藏Loading&lt;/<span class="pl-ent">button</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;
+&lt;<span class="pl-ent">iframe</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>http://m.taobao.com<span class="pl-pds">"</span></span> <span class="pl-e">frameborder</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>main<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">iframe</span>&gt;
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/ahkjxy/loadingUtil/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ahkjxy/loadingUtil/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ahkjxy/loadingUtil"></a> is maintained by <a href="https://github.com/ahkjxy">ahkjxy</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
