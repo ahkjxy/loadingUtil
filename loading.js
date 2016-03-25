@@ -66,6 +66,7 @@
             if (this.isLoading) return;
             var self = this;
             var opts = self.settings;
+            this._setCss();
             this.render();
             this._setDisableScroll();
             this.isLoading = true;
@@ -73,6 +74,19 @@
         hide: function() {
             this._distroy();
             this._setEnableScroll();
+        },
+        _setCss: function() {
+            var e = ".loadingWrap img{animation:rotate 1.2s linear infinite}@keyframes rotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}",
+                d = document.createElement("style");
+            if(document.getElementsByTagName("head")[0].appendChild(d), d.styleSheet) {
+                d.styleSheet.disabled || (d.styleSheet.cssText = e)
+            } else {
+                try{
+                    d.innerHTML = e
+                } catch(f) {
+                    d.innerText = e
+                }
+            }
         },
         _renderImg: function() {
             var self = this;
@@ -142,5 +156,5 @@
     });
     return Loading;
     exports.Loading = Loading;
-    exports.version = '0.0.1';
+    exports.version = '0.0.2';
 }));

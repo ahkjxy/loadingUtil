@@ -49,24 +49,13 @@
             font-weight: normal;
             margin-left: 20px;
         }
-        .loadingWrap img{
-            animation: rotate 1.2s linear infinite;
-        }
-        @keyframes rotate{
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
     </style>
     <script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
     <script src="loading.js"></script>
     <script>
         $(function() {
             var loading = new Loading({
-                image: 'img/02.png',    // Loading image src
+                image: 'img/04.png',    // Loading image src
                 width: 30,      // Loading image width
                 height: 30,      // Loading image height
                 zIndex: 1e3,          // Use a high z-index by default
