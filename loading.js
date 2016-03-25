@@ -40,7 +40,7 @@
         width: 30,      // Loading image width
         height: 30,      // Loading image height
         zIndex: 1e3,          // Use a high z-index by default
-        imageClass: 'loadingImg', // CSS class to assign to the element
+        wrapClass: 'loadingWrap', // CSS class to assign to the loading wrap
         mask: true,           // Opacity of the mask
         maskClass: 'loadingMask', //  CSS class to assign to the mask
         bgOpacity: .6         // Opacity of the mask
@@ -77,17 +77,26 @@
         _renderImg: function() {
             var self = this;
             var opts = self.settings;
-            var img = $('<img />').attr({'src': opts.image, 'class': opts.imageClass}).css({
+            var img = $('<img />').attr({'src': opts.image}).css({
                 width: opts.width,
-                height: opts.height,
-                position: 'fixed',
-                left: '50%',
-                top: '50%',
-                marginLeft: - opts.width / 2,
-                marginTop: - opts.height / 2,
-                zIndex: opts.zIndex
+                height: opts.height
             });
-            $(document.body).append(img);
+            $(document.body).append(
+                $('<div />')
+                    .attr('class', opts.wrapClass)
+                    .css({
+                        'z-index': opts.zIndex,
+                        position: 'fixed',
+                        left: '50%',
+                        top: '50%',
+                        'margin-left': '-40px',
+                        'margin-top': '-25px',
+                        padding: '8px 25px',
+                        'background-color': 'rgba(0, 0, 0, .6)',
+                        'border-radius': '5px'
+                    })
+                );
+            $(img).appendTo($('.' + opts.wrapClass));
         },
         _renderMask: function() {
             var self = this;
@@ -127,7 +136,7 @@
             if(opts.mask) {
                 $('.' + opts.maskClass).remove();
             }
-            $('.' + opts.imageClass).remove();
+            $('.' + opts.wrapClass).remove();
             this.isLoading = false;
         }
     });

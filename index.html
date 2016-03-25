@@ -49,20 +49,31 @@
             font-weight: normal;
             margin-left: 20px;
         }
+        .loadingWrap img{
+            animation: rotate 1.2s linear infinite;
+        }
+        @keyframes rotate{
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
     <script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
     <script src="loading.js"></script>
     <script>
         $(function() {
             var loading = new Loading({
-                image: 'img/01.gif',    // Loading image src
+                image: 'img/02.png',    // Loading image src
                 width: 30,      // Loading image width
                 height: 30,      // Loading image height
                 zIndex: 1e3,          // Use a high z-index by default
                 imageClass: 'loadingImg', // CSS class to assign to the element
                 mask: true,           // Opacity of the mask
                 maskClass: 'loadingMask', //  CSS class to assign to the mask
-                bgOpacity: .6         // Opacity of the mask
+                bgOpacity: .4        // Opacity of the mask
             });
             $('#btn1').click(function() {
                 loading.show();
