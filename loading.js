@@ -132,4 +132,6 @@
         }
     });
     return Loading;
+    exports.Loading = Loading;
+    exports.version = '0.0.1';
 }));
